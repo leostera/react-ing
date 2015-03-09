@@ -25,7 +25,19 @@ build/lib/templates/%.html: src/templates/%.jade
 	@mkdir -p $(@D)
 	jade < $< > $@
 
+dist: dist/index.js dist/index.css dist/index.html
+
+dist/index.js: build/index.js
+	uglifyjs build/index.js -mc --screw-ie8 > dist/index.js
+
+dist/index.css: build/index.css
+	cleancss --output dist/index.css build/index.css 
+
+dist/index.html: build/index.html
+	@cp -f src/index.html dist/
+
 clean:
 	rm -rf ./build/*
+	rm -rf ./dist/*
 
 .PHONY: clean 
