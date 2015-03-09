@@ -6,7 +6,10 @@ LIB = $(SRC:src/%.js=build/lib/%.js)
 JADE = $(shell find src/templates -name "*.jade")
 HTML = $(JADE:src/%.jade=build/lib/%.html)
 
-all: build/index.js build/index.css build/index.html
+IMAGES = $(shell find src/images -name "*.png")
+ASSETS = $(IMAGES:src/images/%.png=build/images/%.png)
+
+all: build/index.js build/index.css build/index.html $(ASSETS)
 
 build/index.html: src/index.html
 	@cp -f src/index.html build/
@@ -24,6 +27,10 @@ build/lib/%.js: src/%.js
 build/lib/templates/%.html: src/templates/%.jade
 	@mkdir -p $(@D)
 	jade < $< > $@
+
+build/images/%.png: src/images/%.png
+	@mkdir -p $(@D)
+	@cp -f $< $(@D)
 
 dist: dist/index.js dist/index.css dist/index.html
 
