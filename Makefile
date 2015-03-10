@@ -8,6 +8,7 @@ HTML = $(JADE:src/%.jade=build/lib/%.html)
 
 IMAGES = $(shell find src/images -name "*.png")
 ASSETS = $(IMAGES:src/images/%.png=build/images/%.png)
+DIST_ASSETS = $(IMAGES:src/images/%.png=dist/images/%.png)
 
 all: build/index.js build/index.css build/index.html $(ASSETS)
 
@@ -32,7 +33,7 @@ build/images/%.png: src/images/%.png
 	@mkdir -p $(@D)
 	cp -f $< $(@D)
 
-dist: dist/index.js dist/index.css dist/index.html
+dist: dist/index.js dist/index.css dist/index.html $(DIST_ASSETS)
 
 dist/index.js: build/index.js
 	uglifyjs build/index.js -mc --screw-ie8 > dist/index.js
@@ -42,6 +43,10 @@ dist/index.css: build/index.css
 
 dist/index.html: build/index.html
 	@cp -f src/index.html dist/
+	
+dist/images/%.png: src/images/%.png
+	@mkdir -p $(@D)
+	cp -f $< $(@D)
 
 clean:
 	rm -rf ./build/*
