@@ -1,25 +1,25 @@
 {
-  "name": "mixtape-client",
+  "name": "react-ing",
   "version": "1.0.0",
-  "private": true,
-  "description": "the mixtape client",
-  "main": "build/index.js",
+  "description": "",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Leandro Ostera <me@leostera.com>",
-  "license": "MIT",
-  "devDependencies": {
-    "babel": "^4.7.8",
-    "browserify": "^9.0.3",
-    "jade": "^1.9.2",
-    "partialify": "^3.1.3"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ostera/react-ing.git"
   },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ostera/react-ing/issues"
+  },
+  "homepage": "https://github.com/ostera/react-ing#readme",
   "dependencies": {
-    "ampersand-model": "^4.1.0",
-    "react": "^0.13.0",
-    "routes": "git://github.com/aaronblohowiak/routes.js",
-    "superagent": "^0.21.0",
-    "vue": "git://github.com/yyx990803/vue"
+    "babel": "^5.8.21",
+    "browserify": "^11.0.1",
+    "gulp": "^3.9.0",
+    "react": "^0.13.3"
   }
 }
