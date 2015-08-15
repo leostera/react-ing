@@ -16,11 +16,21 @@ let UserStore = assign( {}, EventEmitter.prototype, {
     this.emit("change");
   },
 
+  addChangeListener: function(callback) {
+    this.on("change", callback);
+  },
+
+  removeChangeListener: function(callback) {
+    this.removeListener("change", callback);
+  },
+
   find: function (username) {
     return _users.filter(function (user) {
       return user.name === username;
     });
-  }
+  },
+
+  all: function () { return _users; }
 
 });
 
@@ -29,7 +39,7 @@ UserStore.dispatchToken = Dispatcher.register(function (action) {
 
     case ActionTypes.USER_SEARCH:
       UserStore.emitChange();      
-      break;
+    break;
 
     default:
       // no-op
