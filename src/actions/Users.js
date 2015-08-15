@@ -1,19 +1,18 @@
 import Dispatcher from '../dispatchers/Main';
 
-export const ActionTypes = {
-  USER_SEARCH: Symbol("USER_SEARCH")  
+const ActionTypes = {
+  USER_SEARCH: Symbol("USER_SEARCH"),
 };
 
-export const UserActionCreator = {
+let UserActionCreator = {
 
-  search: function (username) {
-    debugger;
+  search: (username) => {
     Dispatcher.dispatch({
       type: ActionTypes.USER_SEARCH,
       username: username
     });
-    console.log(ActionTypes.USER_SEARCH, username);
   }
 
 };
 
+export { ActionTypes, UserActionCreator };

@@ -1,5 +1,5 @@
 import { Dispatcher } from 'flux';
 
-const AppDispatcher = new Dispatcher();
+let _AppDispatcher = new Dispatcher();
 
-export default AppDispatcher;
+export default _AppDispatcher;

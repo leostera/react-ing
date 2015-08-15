@@ -1,15 +1,16 @@
 import EventEmitter from 'events';
+import assign from 'object-assign';
 
 import Dispatcher from '../dispatchers/Main';
 import { ActionTypes } from '../actions/Users';
 
 // Internal data structure for users
-var _users = [{
+let _users = [{
   name: "ostera",
   email: "leandro@ostera.io"
 }];
 
-var UserStore = Object.assign( {}, EventEmitter.prottotype, {
+let UserStore = assign( {}, EventEmitter.prototype, {
 
   emitChange: function () {
     this.emit("change");
@@ -27,7 +28,6 @@ UserStore.dispatchToken = Dispatcher.register(function (action) {
   switch(action.type) {
 
     case ActionTypes.USER_SEARCH:
-      debugger;
       UserStore.emitChange();      
       break;
 
